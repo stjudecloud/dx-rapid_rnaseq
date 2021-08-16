@@ -1,6 +1,8 @@
 {
-  "name": "RRS test",
-  "title": "RRS test",
+  "name": "Rapid RNA-Seq (BAM)",
+  "title": "Rapid RNA-Seq (BAM)",
+  "summary": "A fusion calling pipeline",
+  "version": "2.0.0",
   "inputs": [
     {
       "name": "bam",
@@ -121,6 +123,7 @@
     {
       "id": "coverage",
       "executable": "app-stjude_coverage_bw/1.2.0",
+      "name": "Coverage calculation",
       "input": {
         "BAM": {
           "$dnanexus_link": {
@@ -142,6 +145,7 @@
     {
       "id": "fuzzion",
       "executable": "app-stjude_fuzzion/1.1.0",
+      "name": "Fuzzion fuzzy fusion finder",
       "input": {
         "BAM": {
           "$dnanexus_link": {
@@ -153,6 +157,7 @@
     {
       "id": "rnapeg",
       "executable": "app-stjude_rnapeg/1.3.0",
+      "name": "RNApeg junction analysis",
       "input": {
         "bam": {
           "$dnanexus_link": {
@@ -174,6 +179,7 @@
     {
       "id": "cicero",
       "executable": "app-stjude_cicero/1.7.1",
+      "name": "Fusion finding",
       "input": {
         "star_mapped_sorted_bam": {
           "$dnanexus_link": {
@@ -201,11 +207,12 @@
     {
       "id": "visualize_coverage",
       "executable": "app-stjude_build_visualizer/1.1.1",
+      "name": "Visualize coverage",
       "input": {
         "viewer_file": {
           "$dnanexus_link": {
-            "project": "project-F5444K89PZxXjBqVJ3Pp79B4",
-            "id": "file-F6YJf5Q93pQbpk5Y6kYqkfkf"
+            "project": "project-F5YPXzQ93pQjZ5vx76Qk9pB2",
+            "id": "file-FpK61FQ93pQqKj529kX2Xg4B"
           }
         },
         "files_to_view": [
@@ -222,11 +229,12 @@
     {
       "id": "visualize_fusions",
       "executable": "app-stjude_build_visualizer/1.1.1",
+      "name": "Visualize fusions",
       "input": {
         "viewer_file": {
           "$dnanexus_link": {
-            "project": "project-F5444K89PZxXjBqVJ3Pp79B4",
-            "id": "file-F6YJf6j93pQjy7vF7X3b7p7z"
+            "project": "project-F5YPXzQ93pQjZ5vx76Qk9pB2",
+            "id": "file-F7Y1kB093pQZgb8k2gB5y29b"
           }
         },
         "files_to_view": [
@@ -237,12 +245,35 @@
             }
           }
         ],
-        "output_name": "Putative Fusions"
+        "output_name": "Putative Fusions (hg19)"
+      }
+    },
+    {
+      "id": "visualize_fusions_hg38",
+      "executable": "app-stjude_build_visualizer/1.1.1",
+      "name": "Visualize fusions",
+      "input": {
+        "viewer_file": {
+          "$dnanexus_link": {
+            "project": "project-F5YPXzQ93pQjZ5vx76Qk9pB2",
+            "id": "file-F7Y1kB893pQVY9v88b5v7Xj7"
+          }
+        },
+        "files_to_view": [
+          {
+            "$dnanexus_link": {
+              "stage": "cicero",
+              "outputField": "cicero_final_fusions"
+            }
+          }
+        ],
+        "output_name": "Putative Fusions (hg38)"
       }
     },
     {
       "id": "tag_outputs",
       "executable": "app-stjude_tag_outputs/1.0.0",
+      "name": "Tag outputs",
       "input": {
         "files_to_tag": [
           {
