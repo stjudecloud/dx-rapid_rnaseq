@@ -144,7 +144,6 @@
       "id": "map_reads",
       "executable": "app-stjude_star/1.3.1",
       "name": "STAR alignment",
-      "folder": "/",
       "input": {
         "fastq_r1": {
           "$dnanexus_link": {
