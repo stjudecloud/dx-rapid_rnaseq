@@ -2,7 +2,7 @@
   "name": "Rapid RNA-Seq (FastQ)",
   "title": "Rapid RNA-Seq (FastQ)",
   "summary": "A fusion calling pipeline",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "inputs": [
     {
       "name": "fastq_r1",
